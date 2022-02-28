@@ -1,15 +1,20 @@
-import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Header from './components/Header';
+import HomePage from './pages/HomePage';
+import NoPageFound from './pages/NoPageFound';
+import GamePage from './pages/GamePage';
+import AboutPage from './pages/AboutPage';
 
 function App() {
   return (
-    <Router>
-      <Route path='/'>
-        <Header />
-        </Route>
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path='/' element={<HomePage />} />
+        <Route path='/game-page/:id' element={<GamePage />} />
+        <Route path='/about' element={<AboutPage />} />
+        <Route path='*' element={<NoPageFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
